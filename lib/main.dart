@@ -22,12 +22,7 @@ Color baseColor = kBlue;
 Color fontColor = kLight;
 String laptopURL = 'assets/laptop.png';
 
-class HomePage extends StatefulWidget {
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
