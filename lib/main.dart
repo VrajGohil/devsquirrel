@@ -1,47 +1,47 @@
 import 'package:clay_containers/widgets/clay_text.dart';
 import 'package:devsquirrel/widgets/navbar.dart';
 import 'package:flutter/material.dart';
-import 'constants/colors.dart';
+import 'package:provider/provider.dart';
+import 'models/custom_theme.dart';
 import 'utils/responsiveLayout.dart';
 import 'widgets/search.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 
-void main() => runApp(MaterialApp(
-      title: 'Flutter Landing Page',
-      debugShowCheckedModeBanner: false,
-      themeMode: ThemeMode.dark,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        fontFamily: 'JetBrains',
+void main() => runApp(ChangeNotifierProvider(
+  create: (context) => CustomTheme(),
+  child:   MaterialApp(
+        title: 'Flutter Landing Page',
+        debugShowCheckedModeBanner: false,
+        themeMode: ThemeMode.dark,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          fontFamily: 'JetBrains',
+        ),
+        home: HomePage(),
       ),
-      home: HomePage(),
-    ));
+));
 
-//default theme blue
-Color baseColor = kBlue;
-Color fontColor = kLight;
-String laptopURL = 'assets/laptop.png';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: baseColor,
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              NavBar(
-                color: baseColor,
-                fontColor: fontColor,
-              ),
-              Body()
-            ],
+        color: Provider.of<CustomTheme>(context).getBaseColor,
+        child: Scaffold(
+    backgroundColor: Colors.transparent,
+    body: SingleChildScrollView(
+      child: Column(
+        children: <Widget>[
+          NavBar(
+            color: Provider.of<CustomTheme>(context).getBaseColor,
+            fontColor: Provider.of<CustomTheme>(context).getFontColor,
           ),
-        ),
+          Body()
+        ],
       ),
-    );
+    ),
+        ),
+      );
   }
 }
 
@@ -89,7 +89,7 @@ class _LargeChildState extends State<LargeChild> {
                 children: <Widget>[
                   ClayText(
                     ' Dev Squirrel ',
-                    color: baseColor,
+                    color: Provider.of<CustomTheme>(context).getBaseColor,
                     depth: 80,
                     emboss: true,
                     size: 75.0,
@@ -99,15 +99,15 @@ class _LargeChildState extends State<LargeChild> {
                     padding: const EdgeInsets.only(left: 12.0, top: 20),
                     child: Text(
                       "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-                      style: TextStyle(color: fontColor),
+                      style: TextStyle(color: Provider.of<CustomTheme>(context).getFontColor),
                     ),
                   ),
                   SizedBox(
                     height: 40,
                   ),
                   Search(
-                    color: baseColor,
-                    fontColor: fontColor,
+                    color: Provider.of<CustomTheme>(context).getBaseColor,
+                    fontColor: Provider.of<CustomTheme>(context).getFontColor,
                   )
                 ],
               ),
@@ -130,7 +130,7 @@ class Laptop extends StatelessWidget {
       alignment: Alignment.center,
       children: <Widget>[
         Image.asset(
-          laptopURL,
+          Provider.of<CustomTheme>(context).getLaptopURL,
         ),
         FractionallySizedBox(
           widthFactor: 0.4,
@@ -146,7 +146,7 @@ class Laptop extends StatelessWidget {
                 "Web Development",
                 "Cloud Services",
               ],
-              textStyle: TextStyle(fontSize: 30.0,color: fontColor),
+              textStyle: TextStyle(fontSize: 30.0,color: Provider.of<CustomTheme>(context).getFontColor),
               textAlign: TextAlign.start,
               alignment:
                   AlignmentDirectional.topStart // or Alignment.topLeft
@@ -181,7 +181,7 @@ class _SmallChildState extends State<SmallChild> {
             Center(
               child: ClayText(
                 '  Dev Squirrel ',
-                color: baseColor,
+                color: Provider.of<CustomTheme>(context).getBaseColor,
                 depth: 80,
                 emboss: true,
                 size: 60.0,
@@ -193,7 +193,7 @@ class _SmallChildState extends State<SmallChild> {
                 padding: const EdgeInsets.only(left: 12.0, top: 20),
                 child: Text(
                   "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-                  style: TextStyle(color: fontColor),
+                  style: TextStyle(color: Provider.of<CustomTheme>(context).getFontColor),
                 ),
               ),
             ),
@@ -204,8 +204,8 @@ class _SmallChildState extends State<SmallChild> {
               height: 32,
             ),
             Search(
-              color: baseColor,
-              fontColor: fontColor,
+              color: Provider.of<CustomTheme>(context).getBaseColor,
+              fontColor: Provider.of<CustomTheme>(context).getFontColor,
             ),
             SizedBox(
               height: 30,
