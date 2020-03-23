@@ -202,9 +202,12 @@ class SmallChild extends StatelessWidget {
                 SizedBox(
                   height: 32,
                 ),
-                Search(
-                  color: theme.getBaseColor,
-                  fontColor: theme.getFontColor,
+                Container(
+                  padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+                  Search(
+                        color: theme.getBaseColor,
+                        fontColor: theme.getFontColor,
+                  ),
                 ),
                 SizedBox(
                   height: 30,
