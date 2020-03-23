@@ -1,6 +1,8 @@
 import 'package:devsquirrel/constants/colors.dart';
+import 'package:devsquirrel/models/custom_theme.dart';
 import 'package:devsquirrel/widgets/themeButton.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../utils/responsiveLayout.dart';
 import 'package:clay_containers/clay_containers.dart';
 
@@ -53,38 +55,25 @@ class _NavBarState extends State<NavBar> {
             children: <Widget>[
               ThemeButton(
                 color: kBlue,
-                onTap: () {
-                  setState(() {
-//                    baseColor = kBlue;
-//                    laptopURL = 'assets/laptop.png';
-//                    fontColor = kLight;
-                  });
-                },
+                onTap: () => Provider.of<CustomTheme>(context, listen: false).setBlue(),
               ),
               SizedBox(
                 width: 8,
               ),
               ThemeButton(
                 color: kLight,
-                onTap: () {
-                  setState(() {
-//                    baseColor = kLight;
-//                    laptopURL = 'assets/laptopDark.png';
-//                    fontColor = kDark;
-                  });
-                },
+                onTap: () => Provider.of<CustomTheme>(context,listen: false).setLight(),
               ),
               SizedBox(
                 width: 8,
               ),
               ThemeButton(
                 color: kDark,
-                onTap: () {
-                  setState(() {
-//                    baseColor = kDark;
-//                    laptopURL = 'assets/laptop.png';
-//                    fontColor = kLight;
-                  });
+                // onTap: () => Provider.of<CustomTheme>(context).setDark(),
+                onTap: (){
+                  print('tap on dark');
+                  Provider.of<CustomTheme>(context, listen: false).setDark();
+                  print(Provider.of<CustomTheme>(context, listen: false).getBaseColor);
                 },
               ),
             ],
