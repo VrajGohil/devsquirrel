@@ -55,14 +55,14 @@ class _NavBarState extends State<NavBar> {
             children: <Widget>[
               ThemeButton(
                 color: kBlue,
-                onTap: () => Provider.of<CustomTheme>(context).setBlue(),
+                onTap: () => Provider.of<CustomTheme>(context, listen: false).setBlue(),
               ),
               SizedBox(
                 width: 8,
               ),
               ThemeButton(
                 color: kLight,
-                onTap: () => Provider.of<CustomTheme>(context).setLight(),
+                onTap: () => Provider.of<CustomTheme>(context,listen: false).setLight(),
               ),
               SizedBox(
                 width: 8,
@@ -72,8 +72,8 @@ class _NavBarState extends State<NavBar> {
                 // onTap: () => Provider.of<CustomTheme>(context).setDark(),
                 onTap: (){
                   print('tap on dark');
-                  Provider.of<CustomTheme>(context).setDark();
-                  print(Provider.of<CustomTheme>(context).getBaseColor);
+                  Provider.of<CustomTheme>(context, listen: false).setDark();
+                  print(Provider.of<CustomTheme>(context, listen: false).getBaseColor);
                 },
               ),
             ],
