@@ -204,10 +204,10 @@ class SmallChild extends StatelessWidget {
                 ),
                 Container(
                   padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-                  Search(
+                  child: Search(
                         color: theme.getBaseColor,
                         fontColor: theme.getFontColor,
-                  ),
+                        ),
                 ),
                 SizedBox(
                   height: 30,
