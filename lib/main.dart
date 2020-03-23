@@ -166,7 +166,7 @@ class SmallChild extends StatelessWidget {
       builder: (BuildContext context, CustomTheme theme, Widget child) {
         return SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.all(40),
+            padding: EdgeInsets.only(left: 40.0,right: 40.0, top:40.0 , bottom: MediaQuery.of(context).viewInsets.bottom + 40.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
@@ -202,12 +202,9 @@ class SmallChild extends StatelessWidget {
                 SizedBox(
                   height: 32,
                 ),
-                Container(
-                  padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-                  child: Search(
-                        color: theme.getBaseColor,
-                        fontColor: theme.getFontColor,
-                        ),
+                Search(
+                  color: theme.getBaseColor,
+                  fontColor: theme.getFontColor,
                 ),
                 SizedBox(
                   height: 30,
