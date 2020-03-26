@@ -7,7 +7,6 @@ import 'utils/platform_svg.dart';
 import 'utils/responsiveLayout.dart';
 import 'widgets/search.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 
 void main() => runApp(ChangeNotifierProvider(
@@ -30,7 +29,14 @@ class HomePage extends StatelessWidget {
     return Consumer<CustomTheme>(
       builder: (BuildContext context, CustomTheme theme, Widget child) {
         return Container(
-          color: theme.getBaseColor,
+          //color: theme.getBaseColor,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [theme.getBaseColor,theme.getBaseColorEnd],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              ),
+          ),
           child: Scaffold(
             backgroundColor: Colors.transparent,
             body: SingleChildScrollView(
