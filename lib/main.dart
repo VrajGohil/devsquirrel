@@ -3,9 +3,12 @@ import 'package:devsquirrel/widgets/navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'models/custom_theme.dart';
+import 'utils/platform_svg.dart';
 import 'utils/responsiveLayout.dart';
 import 'widgets/search.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
 
 void main() => runApp(ChangeNotifierProvider(
       create: (context) => CustomTheme(),
@@ -37,7 +40,7 @@ class HomePage extends StatelessWidget {
                     color: theme.getBaseColor,
                     fontColor: theme.getFontColor,
                   ),
-                  Body()
+                  Body(),
                 ],
               ),
             ),
@@ -63,53 +66,71 @@ class LargeChild extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<CustomTheme>(
       builder: (BuildContext context, CustomTheme theme, Widget child) {
-        return SizedBox(
-          height: 600,
-          child: Stack(
-            fit: StackFit.expand,
-            children: <Widget>[
-              FractionallySizedBox(
-                alignment: Alignment.centerLeft,
-                widthFactor: .4,
-                child: Laptop(),
-              ),
-              FractionallySizedBox(
-                alignment: Alignment.centerRight,
-                widthFactor: .6,
-                child: Padding(
-                  padding: EdgeInsets.only(left: 48),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      ClayText(
-                        ' Dev Squirrel ',
-                        color: theme.getBaseColor,
-                        depth: 80,
-                        emboss: true,
-                        size: 75.0,
-                        style: TextStyle(fontFamily: 'Title'),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 12.0, top: 20),
-                        child: Text(
-                          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-                          style: TextStyle(color: theme.getFontColor),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 40,
-                      ),
-                      Search(
-                        color: theme.getBaseColor,
-                        fontColor: theme.getFontColor,
-                      )
-                    ],
+        return Column(
+          children: <Widget>[
+            SizedBox(
+              height: 400,
+              child: Stack(
+                fit: StackFit.expand,
+                children: <Widget>[
+                  FractionallySizedBox(
+                    alignment: Alignment.centerLeft,
+                    widthFactor: .4,
+                    child: Laptop(),
                   ),
-                ),
+                  FractionallySizedBox(
+                    alignment: Alignment.centerRight,
+                    widthFactor: .6,
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 48),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          ClayText(
+                            ' Dev Squirrel ',
+                            color: theme.getBaseColor,
+                            depth: 80,
+                            emboss: true,
+                            size: 75.0,
+                            style: TextStyle(fontFamily: 'Title'),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 12.0, top: 20),
+                            child: Text(
+                              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+                              style: TextStyle(color: theme.getFontColor),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 40,
+                          ),
+                          Search(
+                            color: theme.getBaseColor,
+                            fontColor: theme.getFontColor,
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+            SizedBox(
+              height: 1800,
+              child: Stack(
+                fit: StackFit.expand,
+                children: <Widget>[
+                  FractionallySizedBox(
+                    alignment: Alignment.topCenter,
+                    widthFactor: 1,
+                   // child: Image.network('https://i.ibb.co/VDkgwrB/bubble.png',fit: BoxFit.fitWidth,),
+                   child: PlatformSvg.asset('assets/bubble.svg'),
+                  ),
+                ],
+              ),
+            ),
+          ],
         );
       },
     );
