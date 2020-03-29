@@ -1,7 +1,9 @@
+import 'package:clay_containers/clay_containers.dart';
 import 'package:clay_containers/widgets/clay_text.dart';
 import 'package:devsquirrel/widgets/navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'constants/strings.dart';
 import 'models/custom_theme.dart';
 import 'utils/platform_svg.dart';
 import 'utils/responsiveLayout.dart';
@@ -18,7 +20,7 @@ void main() => runApp(ChangeNotifierProvider(
         theme: ThemeData(
           primarySwatch: Colors.blue,
           fontFamily: 'JetBrains',
-        ),
+        ),                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
         home: HomePage(),
       ),
     ));
@@ -114,7 +116,7 @@ class LargeChild extends StatelessWidget {
                           Search(
                             color: theme.getBaseColor,
                             fontColor: theme.getFontColor,
-                          )
+                          ),
                         ],
                       ),
                     ),
@@ -122,16 +124,36 @@ class LargeChild extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
-              height: 1800,
+            Container(
               child: Stack(
-                fit: StackFit.expand,
                 children: <Widget>[
-                  FractionallySizedBox(
+                  Align(
                     alignment: Alignment.topCenter,
-                    widthFactor: 1,
-                   // child: Image.network('https://i.ibb.co/VDkgwrB/bubble.png',fit: BoxFit.fitWidth,),
-                   child: PlatformSvg.asset('assets/bubble.svg'),
+                    child: SizedBox(
+                      child: PlatformSvg.asset(theme.getServiceTitle,width: MediaQuery.of(context).size.width * 0.25),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: SizedBox(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 300.0,left: 30.0),
+                        child: PlatformSvg.asset(kIllustrationUi,width: MediaQuery.of(context).size.width * 0.45),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.bottomRight,
+                    child: SizedBox(
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 850.0,right: 30.0),
+                        child: PlatformSvg.asset(kIllustrationApp,width: MediaQuery.of(context).size.width * 0.45),
+                      ),
+                    ),
+                  ),
+                  FractionallySizedBox(
+                    alignment: Alignment.topCenter,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+                   child: PlatformSvg.asset(theme.getBubble,width: MediaQuery.of(context).size.width * 1.5),
                   ),
                 ],
               ),
