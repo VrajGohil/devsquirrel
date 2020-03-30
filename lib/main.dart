@@ -137,7 +137,7 @@ class LargeChild extends StatelessWidget {
                     alignment: Alignment.topLeft,
                     child: SizedBox(
                       child: Padding(
-                        padding: const EdgeInsets.only(top: 300.0,left: 30.0),
+                        padding: EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.3,left: 30.0),
                         child: PlatformSvg.asset(kIllustrationUi,width: MediaQuery.of(context).size.width * 0.45),
                       ),
                     ),
@@ -146,7 +146,7 @@ class LargeChild extends StatelessWidget {
                     alignment: Alignment.bottomRight,
                     child: SizedBox(
                       child: Padding(
-                        padding: const EdgeInsets.only(top: 850.0,right: 30.0),
+                        padding: EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.85,right: 30.0),
                         child: PlatformSvg.asset(kIllustrationApp,width: MediaQuery.of(context).size.width * 0.45),
                       ),
                     ),
@@ -155,8 +155,64 @@ class LargeChild extends StatelessWidget {
                     alignment: Alignment.topCenter,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
                    child: PlatformSvg.asset(theme.getBubble,width: MediaQuery.of(context).size.width * 1.5),
                   ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Padding(
+                      padding: EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.65,),
+                      child: SizedBox(
+                        child: PlatformSvg.asset(theme.getMethodologyTitle,width: MediaQuery.of(context).size.width * 0.25),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Padding(
+                      padding: EdgeInsets.only(top: MediaQuery.of(context).size.width,),
+                      child: SizedBox(
+                        child: PlatformSvg.asset(theme.getSdlc,width: MediaQuery.of(context).size.width),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Padding(
+                      padding: EdgeInsets.only(top: MediaQuery.of(context).size.width * 1.6,),
+                      child: SizedBox(
+                        child: PlatformSvg.asset(theme.getTechstackTitle,width: MediaQuery.of(context).size.width *0.25,),
+                      ),
+                    ),
+                  ),
                 ],
               ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                ClayContainer(
+                  borderRadius: 46.0,
+                  spread: 15,
+                  width: MediaQuery.of(context).size.width * 0.2,
+                  height: MediaQuery.of(context).size.width * 0.07,
+                ),
+                ClayContainer(
+                  borderRadius: 46.0,
+                  spread: 15,
+                  width: MediaQuery.of(context).size.width * 0.2,
+                  height: MediaQuery.of(context).size.width * 0.07,
+                ),
+                ClayContainer(
+                  borderRadius: 46.0,
+                  spread: 15,
+                  width: MediaQuery.of(context).size.width * 0.2,
+                  height: MediaQuery.of(context).size.width * 0.07,
+                ),
+                ClayContainer(
+                  borderRadius: 46.0,
+                  spread: 15,
+                  width: MediaQuery.of(context).size.width * 0.2,
+                  height: MediaQuery.of(context).size.width * 0.07,
+                ),
+              ],
             ),
           ],
         );
