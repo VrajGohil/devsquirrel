@@ -1,11 +1,15 @@
+import 'package:clay_containers/clay_containers.dart';
 import 'package:clay_containers/widgets/clay_text.dart';
 import 'package:devsquirrel/widgets/navbar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'constants/strings.dart';
 import 'models/custom_theme.dart';
+import 'utils/platform_svg.dart';
 import 'utils/responsiveLayout.dart';
 import 'widgets/search.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+
 
 void main() => runApp(ChangeNotifierProvider(
       create: (context) => CustomTheme(),
@@ -16,7 +20,7 @@ void main() => runApp(ChangeNotifierProvider(
         theme: ThemeData(
           primarySwatch: Colors.blue,
           fontFamily: 'JetBrains',
-        ),
+        ),                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
         home: HomePage(),
       ),
     ));
@@ -27,7 +31,14 @@ class HomePage extends StatelessWidget {
     return Consumer<CustomTheme>(
       builder: (BuildContext context, CustomTheme theme, Widget child) {
         return Container(
-          color: theme.getBaseColor,
+          //color: theme.getBaseColor,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [theme.getBaseColor,theme.getBaseColorEnd],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              ),
+          ),
           child: Scaffold(
             backgroundColor: Colors.transparent,
             body: SingleChildScrollView(
@@ -37,7 +48,7 @@ class HomePage extends StatelessWidget {
                     color: theme.getBaseColor,
                     fontColor: theme.getFontColor,
                   ),
-                  Body()
+                  Body(),
                 ],
               ),
             ),
@@ -63,53 +74,147 @@ class LargeChild extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer<CustomTheme>(
       builder: (BuildContext context, CustomTheme theme, Widget child) {
-        return SizedBox(
-          height: 600,
-          child: Stack(
-            fit: StackFit.expand,
-            children: <Widget>[
-              FractionallySizedBox(
-                alignment: Alignment.centerLeft,
-                widthFactor: .4,
-                child: Laptop(),
-              ),
-              FractionallySizedBox(
-                alignment: Alignment.centerRight,
-                widthFactor: .6,
-                child: Padding(
-                  padding: EdgeInsets.only(left: 48),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      ClayText(
-                        ' Dev Squirrel ',
-                        color: theme.getBaseColor,
-                        depth: 80,
-                        emboss: true,
-                        size: 75.0,
-                        style: TextStyle(fontFamily: 'Title'),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 12.0, top: 20),
-                        child: Text(
-                          "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
-                          style: TextStyle(color: theme.getFontColor),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 40,
-                      ),
-                      Search(
-                        color: theme.getBaseColor,
-                        fontColor: theme.getFontColor,
-                      )
-                    ],
+        return Column(
+          children: <Widget>[
+            SizedBox(
+              height: 400,
+              child: Stack(
+                fit: StackFit.expand,
+                children: <Widget>[
+                  FractionallySizedBox(
+                    alignment: Alignment.centerLeft,
+                    widthFactor: .4,
+                    child: Laptop(),
                   ),
-                ),
+                  FractionallySizedBox(
+                    alignment: Alignment.centerRight,
+                    widthFactor: .6,
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 48),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          ClayText(
+                            ' Dev Squirrel ',
+                            color: theme.getBaseColor,
+                            depth: 80,
+                            emboss: true,
+                            size: 75.0,
+                            style: TextStyle(fontFamily: 'Title'),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 12.0, top: 20),
+                            child: Text(
+                              "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+                              style: TextStyle(color: theme.getFontColor),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 40,
+                          ),
+                          Search(
+                            color: theme.getBaseColor,
+                            fontColor: theme.getFontColor,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+            Container(
+              child: Stack(
+                children: <Widget>[
+                  Align(
+                    alignment: Alignment.topCenter,
+                    child: SizedBox(
+                      child: PlatformSvg.asset(theme.getServiceTitle,width: MediaQuery.of(context).size.width * 0.25),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.topLeft,
+                    child: SizedBox(
+                      child: Padding(
+                        padding: EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.3,left: 30.0),
+                        child: PlatformSvg.asset(kIllustrationUi,width: MediaQuery.of(context).size.width * 0.45),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.bottomRight,
+                    child: SizedBox(
+                      child: Padding(
+                        padding: EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.85,right: 30.0),
+                        child: PlatformSvg.asset(kIllustrationApp,width: MediaQuery.of(context).size.width * 0.45),
+                      ),
+                    ),
+                  ),
+                  FractionallySizedBox(
+                    alignment: Alignment.topCenter,                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+                   child: PlatformSvg.asset(theme.getBubble,width: MediaQuery.of(context).size.width * 1.5),
+                  ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Padding(
+                      padding: EdgeInsets.only(top: MediaQuery.of(context).size.width * 0.65,),
+                      child: SizedBox(
+                        child: PlatformSvg.asset(theme.getMethodologyTitle,width: MediaQuery.of(context).size.width * 0.25),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Padding(
+                      padding: EdgeInsets.only(top: MediaQuery.of(context).size.width,),
+                      child: SizedBox(
+                        child: PlatformSvg.asset(theme.getSdlc,width: MediaQuery.of(context).size.width),
+                      ),
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.center,
+                    child: Padding(
+                      padding: EdgeInsets.only(top: MediaQuery.of(context).size.width * 1.6,),
+                      child: SizedBox(
+                        child: PlatformSvg.asset(theme.getTechstackTitle,width: MediaQuery.of(context).size.width *0.25,),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                ClayContainer(
+                  borderRadius: 46.0,
+                  spread: 15,
+                  width: MediaQuery.of(context).size.width * 0.2,
+                  height: MediaQuery.of(context).size.width * 0.07,
+                ),
+                ClayContainer(
+                  borderRadius: 46.0,
+                  spread: 15,
+                  width: MediaQuery.of(context).size.width * 0.2,
+                  height: MediaQuery.of(context).size.width * 0.07,
+                ),
+                ClayContainer(
+                  borderRadius: 46.0,
+                  spread: 15,
+                  width: MediaQuery.of(context).size.width * 0.2,
+                  height: MediaQuery.of(context).size.width * 0.07,
+                ),
+                ClayContainer(
+                  borderRadius: 46.0,
+                  spread: 15,
+                  width: MediaQuery.of(context).size.width * 0.2,
+                  height: MediaQuery.of(context).size.width * 0.07,
+                ),
+              ],
+            ),
+          ],
         );
       },
     );
@@ -166,7 +271,7 @@ class SmallChild extends StatelessWidget {
       builder: (BuildContext context, CustomTheme theme, Widget child) {
         return SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.all(40),
+            padding: EdgeInsets.only(left: 40.0,right: 40.0, top:40.0 , bottom: MediaQuery.of(context).viewInsets.bottom + 40.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[

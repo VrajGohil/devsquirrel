@@ -54,13 +54,6 @@ class _NavBarState extends State<NavBar> {
           Row(
             children: <Widget>[
               ThemeButton(
-                color: kBlue,
-                onTap: () => Provider.of<CustomTheme>(context, listen: false).setBlue(),
-              ),
-              SizedBox(
-                width: 8,
-              ),
-              ThemeButton(
                 color: kLight,
                 onTap: () => Provider.of<CustomTheme>(context,listen: false).setLight(),
               ),

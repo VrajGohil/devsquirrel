@@ -1,5 +1,4 @@
 import 'package:clay_containers/widgets/clay_containers.dart';
-import 'package:devsquirrel/constants/colors.dart';
 import 'package:flutter/material.dart';
 import '../utils/responsiveLayout.dart';
 import 'sendbtn.dart';
